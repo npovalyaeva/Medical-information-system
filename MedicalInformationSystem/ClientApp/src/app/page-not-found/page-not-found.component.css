@@ -1,0 +1,22 @@
+div {
+  position: relative;
+  text-align: center;
+  margin: 100px auto 0;
+}
+
+img {
+  width: 250px;
+}
+
+p {
+  font-family: Poppins;
+  font-size: 24px;
+  color: #323C47;
+}
+
+a {
+  font-family: Poppins;
+  font-size: 15px;
+  text-decoration-line: underline;
+  color: #109CF1;
+}

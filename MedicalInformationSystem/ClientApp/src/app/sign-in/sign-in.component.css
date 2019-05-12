@@ -1,0 +1,75 @@
+.login-page {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 584px;
+}
+
+.logo {
+  height: 312px;
+}
+
+.form {
+  top: 17%;
+  width: 30%;
+}
+
+h2 {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 72px;
+  letter-spacing: 0.01em;
+  color: #323C47;
+}
+
+.forgot_pass {
+  float: right;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: right;
+  letter-spacing: 0.01em;
+}
+
+a {
+  text-decoration-line: underline;
+  color: #109CF1;
+}
+
+mat-form-field {
+  width: 100%;
+  font-size: 18px;
+  line-height: 27px;
+}
+
+mat-icon {
+  color: #8C8C8C;
+  cursor: pointer;
+}
+
+button {
+  background: #62A5A2;
+  color: #F7F1E6;
+  height: 33px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
+.sign_up {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: 0.01em;
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+}
