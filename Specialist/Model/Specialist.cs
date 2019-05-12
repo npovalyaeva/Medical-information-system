@@ -2,7 +2,7 @@
 
 namespace Specialist.Model
 {
-    class Specialist
+    public class Specialist
     {
         public int Id { get; set; }
 
@@ -30,7 +30,7 @@ namespace Specialist.Model
 
         public int? SubunitId { get; set; }
 
-        public int UnitId { get; set; }
+        public int? UnitId { get; set; }
 
         public int? ParlourId { get; set; }
     }

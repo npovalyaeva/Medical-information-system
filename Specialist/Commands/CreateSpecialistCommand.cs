@@ -28,7 +28,7 @@ namespace Specialist.Commands
 
         public int? SubunitId { get; set; }
 
-        public int UnitId { get; set; }
+        public int? UnitId { get; set; }
 
         public int? ParlourId { get; set; }
     }

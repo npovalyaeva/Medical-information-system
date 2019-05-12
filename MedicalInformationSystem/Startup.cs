@@ -21,6 +21,7 @@ namespace MedicalInformationSystem
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc()/*.SetCompatibilityVersion(CompatibilityVersion.Version_2_1)*/;
+            services.Add(new ServiceDescriptor(typeof(Specialist.Data.SpecialistContext), new Specialist.Data.SpecialistContext(Configuration.GetConnectionString("DefaultConnection"))));
             services.AddSwaggerGen(swagger =>
             {
                 swagger.DescribeAllEnumsAsStrings();

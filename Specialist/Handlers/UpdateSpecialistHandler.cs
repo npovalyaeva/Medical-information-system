@@ -1,6 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using Specialist.Data;
-using Specialist.Model;
 using Specialist.Commands;
 using Mapster;
 
@@ -18,14 +17,16 @@ namespace Specialist.Handlers
         public bool Handle(int specialistId, CreateSpecialistCommand request)
         {
             var model = request.Adapt<Model.Specialist>();
+            string tempHash = Hash.FindHash(model.PasswordHash);
+            model.PasswordHash = tempHash;
 
             using (MySqlConnection conn = _context.GetConnection())
             {
                 conn.Open();
 
-                string query = string.Format("UPDATE specialists SET last_name = '{1}', first_name= '{2}' middle_name = '{3}'" +
+                string query = string.Format("UPDATE specialists SET last_name = '{1}', first_name= '{2}', middle_name = '{3}', " +
                     "email = '{4}', password_hash = '{5}', birthday = '{6}', education = '{7}', position = '{8}', " +
-                    "admission_date = '{9}', dismisal_date = '{10}', wage_rate = '{11}', " +
+                    "admission_date = '{9}', dismissal_date = '{10}', wage_rate = '{11}', " +
                     "Subunits_subunit_id = '{12}', Units_unit_id = '{13}', Parlours_parlour_id = '{14}' WHERE specialist_id = {0}",
                     specialistId.ToString(),
                     model.LastName,
