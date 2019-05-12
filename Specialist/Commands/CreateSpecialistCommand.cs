@@ -1,11 +1,9 @@
 ﻿using System;
 
-namespace Specialist.Model
+namespace Specialist.Commands
 {
-    class Specialist
+    public class CreateSpecialistCommand
     {
-        public int Id { get; set; }
-
         public string FirstName { get; set; }
 
         public string MiddleName { get; set; }
