@@ -23,7 +23,7 @@ namespace Specialist.Handlers
             {
                 conn.Open();
 
-                string query = string.Format("select * from Specialists where (email, password_hash) = ('{0}', '{1}')",
+                string query = string.Format("SELECT * FROM Specialists WHERE (email, password_hash) = ('{0}', '{1}')",
                     specialistEmail, Hash.FindHash(specialistPassword));
                 MySqlCommand cmd = new MySqlCommand(query, conn);
 
@@ -40,12 +40,21 @@ namespace Specialist.Handlers
                                 FirstName = reader["first_name"].ToString(),
                                 MiddleName = reader["middle_name"].ToString(),
                                 Email = reader["email"].ToString(),
-                                
+                                PasswordHash = reader["password_hash"].ToString(),
+                                Birthday = DateTime.Parse(reader["birthday"].ToString()),
+                                Education = reader["education"].ToString(),
+                                Position = reader["position"].ToString(),
+                                AdmissionDate = DateTime.Parse(reader["admission_date"].ToString()),
+                                DismissalDate = DateTime.Parse(reader["dismissal_date"].ToString()),
+                                WageRate = Convert.ToDecimal(reader["wage_rate"]),
+                                SubunitId = Convert.ToInt32(reader["Subunits_subunit_id"]),
+                                UnitId = Convert.ToInt32(reader["Units_unit_id"]),
+                                ParlourId = Convert.ToInt32(reader["Parlours_parlour_id"])
                             });
                         }
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
                     return null;
                 }
@@ -57,5 +66,4 @@ namespace Specialist.Handlers
             return list;
         }
     }
-}
 }
