@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedicalInformationSystem", "MedicalInformationSystem\MedicalInformationSystem.csproj", "{408B3024-A975-49E1-A267-32E1644F411A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Specialist", "Specialist\Specialist.csproj", "{CDC1AB45-B464-417F-941E-853256C7239F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Specialist", "Specialist\Specialist.csproj", "{CDC1AB45-B464-417F-941E-853256C7239F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Doctor", "Doctor\Doctor.csproj", "{2A8EB900-C523-49F7-9A12-914342783D7C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{CDC1AB45-B464-417F-941E-853256C7239F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDC1AB45-B464-417F-941E-853256C7239F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDC1AB45-B464-417F-941E-853256C7239F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A8EB900-C523-49F7-9A12-914342783D7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A8EB900-C523-49F7-9A12-914342783D7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A8EB900-C523-49F7-9A12-914342783D7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A8EB900-C523-49F7-9A12-914342783D7C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Doctor\Doctor.csproj" />
     <ProjectReference Include="..\Specialist\Specialist.csproj" />
   </ItemGroup>
 
