@@ -1,0 +1,53 @@
+a {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.logo_container {
+  margin-left: 30px;
+  width: 300px;
+  display: flex;
+  justify-content: space-around;
+  color: #F7F1E6; font-family: 'Open Sans', sans-serif; font-weight: 300
+}
+
+.logo {
+  width: 32px;
+  height: 32px;
+}
+
+mat-icon {
+  color: rgb(218, 207, 188);
+}
+
+mat-sidenav-container {
+  height: 520px;
+}
+ 
+mat-sidenav {
+  box-shadow: 6px 0px 18px rgba(0, 0, 0, 0.06);
+  width: 25%;
+}
+
+mat-toolbar {
+  background-color: #1B2327;
+}
+
+.user_info {
+  height: 100px;
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.user_info p {
+  margin: 0px 0px;
+}
+
+.sign_out {
+  margin-left: auto;
+  width: 46px;
+  font-family: 'Open Sans', sans-serif;
+  color: #62A5A2;
+  font-size: 14px;
+}

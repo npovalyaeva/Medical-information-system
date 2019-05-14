@@ -3,4 +3,9 @@
   .body-content {
     padding-top: 50px;
   }
+  
+}
+:host {
+  font-family: 'Open Sans', sans-serif;
+  height: 520px;
 }

@@ -1,16 +1,16 @@
 <div class="login-page">
   <img class="logo" [src]="photo">
   <div class="form">
-    <h2>Sign In</h2>
+    <h2>Вход</h2>
     <form action="#" method="post" class="login_form">
       <mat-form-field floatLabel="never">
         <input matInput placeholder="Email">
       </mat-form-field>
       <mat-form-field floatLabel="never">
-        <input matInput placeholder="Password" [type]="show ? 'text' : 'password'">
+        <input matInput placeholder="Пароль" [type]="show ? 'text' : 'password'">
         <mat-icon matSuffix (click)="password()">{{iconName}}</mat-icon>
       </mat-form-field>
-      <button routerLink="profile" mat-flat-button>Sign In</button>
+      <button routerLink="../main" mat-flat-button>Войти</button>
       <div class="sign_up">
       </div>
     </form>

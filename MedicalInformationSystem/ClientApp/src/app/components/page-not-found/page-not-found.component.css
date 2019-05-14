@@ -9,13 +9,13 @@ img {
 }
 
 p {
-  font-family: Poppins;
+  font-family: 'Open Sans', sans-serif;
   font-size: 24px;
   color: #323C47;
 }
 
 a {
-  font-family: Poppins;
+  font-family: 'Open Sans', sans-serif;
   font-size: 15px;
   text-decoration-line: underline;
   color: #109CF1;
