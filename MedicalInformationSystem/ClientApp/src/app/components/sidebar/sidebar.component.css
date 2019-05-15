@@ -7,7 +7,9 @@ a {
   width: 300px;
   display: flex;
   justify-content: space-around;
-  color: #F7F1E6; font-family: 'Open Sans', sans-serif; font-weight: 300
+  color: #F7F1E6; 
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
 }
 
 .logo {
@@ -46,7 +48,7 @@ mat-toolbar {
 
 .sign_out {
   margin-left: auto;
-  width: 46px;
+  width: 100px;
   font-family: 'Open Sans', sans-serif;
   color: #62A5A2;
   font-size: 14px;

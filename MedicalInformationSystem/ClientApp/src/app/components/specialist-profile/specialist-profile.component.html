@@ -1,3 +1,65 @@
-<p>
-  specialist-profile works!
-</p>
+<div class="specialist_profile_container">
+    <div class="tile">
+        <div class="specialist_info_container"> 
+            <img class="specialist_img" [src]="photo" style="margin-top:10px;">
+            <div class="basic_info_container">
+                <p style="font-size: 20px">{{specialist.first_name+' '+specialist.middle_name+' '+specialist.last_name}}</p>
+                <p style="color: #62A5A2">{{specialist.position}}</p>
+                <p>Дата рождения: {{specialist.birthday}}</p>
+                <div *ngIf="specialist.is_doctor; then doctor else nurse"></div>
+                <ng-template #nurse><p>Пост № {{(specialist.post_number) ? specialist.post_number : '-'}}</p></ng-template>
+                <ng-template #doctor><p>Квалификация: {{(specialist.qualification) ? specialist.qualification : '-'}}</p></ng-template>
+            </div>
+        </div>
+    </div>
+    <div class="tile">
+        <div>
+            <p class="article">Подразделение: </p>
+            <p class="info">{{specialist.unit}}</p>
+            <p class="article">Отделение: </p>
+            <p class="info">{{specialist.subunit}}</p>
+            <p class="article">Номер кабинета: </p>
+            <p class="info">{{specialist.parlour}}</p>
+        </div>
+    </div>
+    <div class="tile" style="width: 350px;">
+            <div>
+                <p class="article">Образование: </p>
+                <p class="info">{{specialist.education}}</p>
+                <p *ngIf="specialist.is_doctor" class="info">Специальность по диплому: {{specialist.diploma_speciality}}</p>
+                <p class="article">Дата приема на работу: </p>
+                <p class="info">{{specialist.admission_date}}</p>
+                <p class="article">Ставка: </p>
+                <p class="info">{{specialist.wage_rate}}</p>
+            </div>
+        </div>
+</div>
+<div class="tile">
+    <div class="specialist_profile_container">
+        <div style="width: 40%;">
+            <p class="article">Изменить email: </p>
+            <form >
+                <mat-form-field appearance="outline">
+                    <mat-label>Введите новый email</mat-label>
+                    <input matInput placeholder="example@mail.com"  [formControl]="emailFormControl">
+                    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                        Введенный email некорректен
+                    </mat-error>
+                </mat-form-field>
+                <br>
+                <button mat-raised-button>Сохранить</button>
+            </form>
+        </div>
+        <div style="width: 50%;">
+            <p class="article">Изменить пароль: </p>
+            <form>
+                <mat-form-field appearance="outline">
+                    <mat-label>Введите новый пароль</mat-label>
+                    <input matInput placeholder="password123" type="password">
+                </mat-form-field>
+                <br>
+                <button mat-raised-button>Сохранить</button>
+            </form>
+        </div>
+    </div>
+</div>
