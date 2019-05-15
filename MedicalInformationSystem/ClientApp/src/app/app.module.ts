@@ -14,6 +14,7 @@ import {
   MatCardModule,
   MatDividerModule,
   MatTableModule,
+  MatButtonToggleModule,
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -24,6 +25,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SpecialistProfileComponent } from './components/specialist-profile/specialist-profile.component';
 import { SignInLayoutComponent } from './layouts/sign-in-layout/sign-in-layout.component';
 import { HomeLayoutComponent } from './layouts/home-layout/home-layout.component';
+import { MedicalRecordsComponent } from './components/medical-records/medical-records.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'sign-in', pathMatch: 'full'},
@@ -36,6 +38,7 @@ const appRoutes: Routes = [
     children: [
       { path: '', redirectTo: 'profile', pathMatch: 'full' },
       { path: 'profile', component: SpecialistProfileComponent },
+      { path: 'records', component: MedicalRecordsComponent },
     ]
   },
   { path: '**', component: PageNotFoundComponent }
@@ -50,6 +53,7 @@ const appRoutes: Routes = [
     SpecialistProfileComponent,
     SignInLayoutComponent,
     HomeLayoutComponent,
+    MedicalRecordsComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -68,6 +72,7 @@ const appRoutes: Routes = [
     MatCardModule,
     MatDividerModule,
     MatTableModule,
+    MatButtonToggleModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

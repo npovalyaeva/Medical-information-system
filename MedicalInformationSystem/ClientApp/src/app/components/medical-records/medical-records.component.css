@@ -1,0 +1,21 @@
+mat-button-toggle-group {
+  margin: 20px 20px;
+}
+
+
+table {
+    margin: 20px 20px;
+    width: 96%;
+ }
+
+.mat-header-cell {
+  color: rgb(218, 207, 188);
+  font-size: 16px;
+}
+
+.mat-header-row {
+  position: sticky;
+  top: 0;
+  background: #D43D21;
+  z-index: 9999;
+}
