@@ -56,7 +56,7 @@ namespace MedicalInformationSystem
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Medical Information System Swagger");
             });
 
-            app.UseCors("MyPolicy");
+            app.UseCors(builder => builder.WithOrigins("http://localhost:4200"));
             app.UseHttpsRedirection();
             app.UseMvc();
             
@@ -71,6 +71,7 @@ namespace MedicalInformationSystem
             }
 
             //app.UseHttpsRedirection();
+            app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
