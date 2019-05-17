@@ -20,6 +20,14 @@ namespace MedicalInformationSystem
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(o => o.AddPolicy("MyPolicy", corsBuilder =>
+            {
+                corsBuilder.WithOrigins("http://localhost:4200")
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowAnyOrigin()
+                    .AllowCredentials();
+            }));
             services.AddMvc()/*.SetCompatibilityVersion(CompatibilityVersion.Version_2_1)*/;
             services.Add(new ServiceDescriptor(typeof(Specialist.Data.SpecialistContext), new Specialist.Data.SpecialistContext(Configuration.GetConnectionString("DefaultConnection"))));
             services.Add(new ServiceDescriptor(typeof(Doctor.Data.DoctorContext), new Doctor.Data.DoctorContext(Configuration.GetConnectionString("DefaultConnection"))));
@@ -29,7 +37,6 @@ namespace MedicalInformationSystem
                 swagger.DescribeAllParametersInCamelCase();
                 swagger.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info { Title = "Medical Information System Swagger" });
             });
-
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -47,8 +54,10 @@ namespace MedicalInformationSystem
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Medical Information System Swagger");
             });
 
+            app.UseCors("MyPolicy");
+            app.UseHttpsRedirection();
             app.UseMvc();
-
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -59,7 +68,7 @@ namespace MedicalInformationSystem
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 

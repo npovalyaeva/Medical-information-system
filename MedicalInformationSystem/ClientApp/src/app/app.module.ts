@@ -15,6 +15,8 @@ import {
   MatDividerModule,
   MatTableModule,
   MatButtonToggleModule,
+  MatProgressSpinnerModule,
+  MatTooltipModule,
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -26,6 +28,7 @@ import { SpecialistProfileComponent } from './components/specialist-profile/spec
 import { SignInLayoutComponent } from './layouts/sign-in-layout/sign-in-layout.component';
 import { HomeLayoutComponent } from './layouts/home-layout/home-layout.component';
 import { MedicalRecordsComponent } from './components/medical-records/medical-records.component';
+import { MedicalHistoryComponent } from './components/medical-history/medical-history.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'sign-in', pathMatch: 'full'},
@@ -39,6 +42,7 @@ const appRoutes: Routes = [
       { path: '', redirectTo: 'profile', pathMatch: 'full' },
       { path: 'profile', component: SpecialistProfileComponent },
       { path: 'records', component: MedicalRecordsComponent },
+      { path: 'records/:id', component: MedicalHistoryComponent },
     ]
   },
   { path: '**', component: PageNotFoundComponent }
@@ -54,6 +58,7 @@ const appRoutes: Routes = [
     SignInLayoutComponent,
     HomeLayoutComponent,
     MedicalRecordsComponent,
+    MedicalHistoryComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -73,6 +78,8 @@ const appRoutes: Routes = [
     MatDividerModule,
     MatTableModule,
     MatButtonToggleModule,
+    MatProgressSpinnerModule,
+    MatTooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

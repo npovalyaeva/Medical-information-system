@@ -1,14 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-export interface MedicalRecordInfoForCurrent {
-  record_id: number;
-  first_name: string;
-  last_name: string;
-  patient_id: number;
-  icd10: string;
-  year: number;
-  charge_date: string;
-}
+import { ApiService } from '../api.service';
+import {Record} from '../record';
 
 export interface MedicalRecordInfoForArchieve {
   record_id: number;
@@ -21,7 +13,7 @@ export interface MedicalRecordInfoForArchieve {
   discharge_date: string;
 }
 
-const CURRENT_DATA: MedicalRecordInfoForCurrent[] = [
+const CURRENT_DATA: Record[] = [
   {record_id: 1, first_name: 'Анастасия', last_name: 'Дайгод', patient_id: 1012, icd10: 'E50.0', year: 2019, charge_date: '01.01.2019'},
   {record_id: 2, first_name: 'Надежда', last_name: 'Поваляева', patient_id: 3409, icd10: 'E60.0', year: 2019, charge_date: '01.04.2019'},
   {record_id: 2, first_name: 'Игорь', last_name: 'Шиманский', patient_id: 3029, icd10: 'E70.0', year: 2019, charge_date: '29.02.2019'},
@@ -129,19 +121,6 @@ const CURRENT_DATA: MedicalRecordInfoForCurrent[] = [
   {record_id: 2, first_name: 'Игорь', last_name: 'Шиманский', patient_id: 3029, icd10: 'E70.0', year: 2019, charge_date: '29.02.2019'},
   {record_id: 1, first_name: 'Анастасия', last_name: 'Дайгод', patient_id: 1012, icd10: 'E50.0', year: 2019, charge_date: '01.01.2019'},
   {record_id: 2, first_name: 'Надежда', last_name: 'Поваляева', patient_id: 3409, icd10: 'E60.0', year: 2019, charge_date: '01.04.2019'},
-  {record_id: 2, first_name: 'Игорь', last_name: 'Шиманский', patient_id: 3029, icd10: 'E70.0', year: 2019, charge_date: '29.02.2019'},
-  {record_id: 1, first_name: 'Анастасия', last_name: 'Дайгод', patient_id: 1012, icd10: 'E50.0', year: 2019, charge_date: '01.01.2019'},
-  {record_id: 2, first_name: 'Надежда', last_name: 'Поваляева', patient_id: 3409, icd10: 'E60.0', year: 2019, charge_date: '01.04.2019'},
-  {record_id: 2, first_name: 'Игорь', last_name: 'Шиманский', patient_id: 3029, icd10: 'E70.0', year: 2019, charge_date: '29.02.2019'},
-  {record_id: 1, first_name: 'Анастасия', last_name: 'Дайгод', patient_id: 1012, icd10: 'E50.0', year: 2019, charge_date: '01.01.2019'},
-  {record_id: 2, first_name: 'Надежда', last_name: 'Поваляева', patient_id: 3409, icd10: 'E60.0', year: 2019, charge_date: '01.04.2019'},
-  {record_id: 2, first_name: 'Игорь', last_name: 'Шиманский', patient_id: 3029, icd10: 'E70.0', year: 2019, charge_date: '29.02.2019'},
-  {record_id: 1, first_name: 'Анастасия', last_name: 'Дайгод', patient_id: 1012, icd10: 'E50.0', year: 2019, charge_date: '01.01.2019'},
-  {record_id: 2, first_name: 'Надежда', last_name: 'Поваляева', patient_id: 3409, icd10: 'E60.0', year: 2019, charge_date: '01.04.2019'},
-  {record_id: 2, first_name: 'Игорь', last_name: 'Шиманский', patient_id: 3029, icd10: 'E70.0', year: 2019, charge_date: '29.02.2019'},
-  {record_id: 1, first_name: 'Анастасия', last_name: 'Дайгод', patient_id: 1012, icd10: 'E50.0', year: 2019, charge_date: '01.01.2019'},
-  {record_id: 2, first_name: 'Надежда', last_name: 'Поваляева', patient_id: 3409, icd10: 'E60.0', year: 2019, charge_date: '01.04.2019'},
-  {record_id: 2, first_name: 'Игорь', last_name: 'Шиманский', patient_id: 3029, icd10: 'E70.0', year: 2019, charge_date: '29.02.2019'},
 ];
 
 const ARCHIEVE_DATA: MedicalRecordInfoForArchieve[] = [
@@ -154,7 +133,8 @@ const ARCHIEVE_DATA: MedicalRecordInfoForArchieve[] = [
 @Component({
   selector: 'app-medical-records',
   templateUrl: './medical-records.component.html',
-  styleUrls: ['./medical-records.component.css']
+  styleUrls: ['./medical-records.component.css'],
+  providers: [ApiService]
 })
 export class MedicalRecordsComponent implements OnInit {
 
@@ -162,9 +142,20 @@ export class MedicalRecordsComponent implements OnInit {
   displayedColumnsForCurrent: string[] = ['year/record', 'name', 'charge_date', 'icd10'];
   currentDataSource = CURRENT_DATA;
   archieveDataSource = ARCHIEVE_DATA;
-  constructor() { }
+  isLoadingResults = true;
+
+  constructor(private api: ApiService) { }
 
   ngOnInit() {
+    this.api.getRecords()
+    .subscribe(res => {
+      this.currentDataSource = res;
+      console.log(this.currentDataSource);
+      this.isLoadingResults = false;
+    }, err => {
+      console.log(err);
+      this.isLoadingResults = false;
+    });
   }
 
 }

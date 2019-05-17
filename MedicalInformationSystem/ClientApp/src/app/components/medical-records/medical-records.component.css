@@ -19,3 +19,13 @@ table {
   background: #D43D21;
   z-index: 9999;
 }
+
+/* .icd10-tooltip {
+  white-space: pre-line;
+  
+  background: #b71c1c;
+} */
+
+.example-tooltip-red {
+  background: #b71c1c;
+}

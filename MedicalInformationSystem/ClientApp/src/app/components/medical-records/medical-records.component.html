@@ -28,7 +28,10 @@
 
   <ng-container matColumnDef="icd10">
     <th mat-header-cell *matHeaderCellDef>{{(group.value === 'archive') ? 'Заключительный диагноз' : 'Текущий диагноз'}}</th>
-    <td mat-cell *matCellDef="let element"> {{element.icd10}} </td>
+    <td mat-cell matTooltip="Info about the action 
+    Info about the action
+     Info about the action" matTooltipPosition="right" 
+     matTooltipClass="example-tooltip-red" *matCellDef="let element"> {{element.icd10}} </td>
   </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="(group.value === 'archive') ? displayedColumnsForArchive : displayedColumnsForCurrent"></tr>
