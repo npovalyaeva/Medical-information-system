@@ -27,6 +27,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Doctor\Doctor.csproj" />
+    <ProjectReference Include="..\ICD10\Disease.csproj" />
+    <ProjectReference Include="..\MedicalRecord\MedicalRecord.csproj" />
     <ProjectReference Include="..\Specialist\Specialist.csproj" />
   </ItemGroup>
 
