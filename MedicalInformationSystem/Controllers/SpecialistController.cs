@@ -11,7 +11,7 @@ namespace CertificationCenter.Controllers
     public class SpecialistController : Controller
     {
         [HttpPost("[action]")]
-        public bool CreateMedicalSpecialist([FromBody] CreateSpecialistCommand request)
+        public bool CreateSpecialist([FromBody] CreateSpecialistCommand request)
         {
             SpecialistContext context = HttpContext.RequestServices.GetService(typeof(SpecialistContext)) as SpecialistContext;
             CreateSpecialistHandler handler = new CreateSpecialistHandler(context);
@@ -19,14 +19,22 @@ namespace CertificationCenter.Controllers
         }
 
         [HttpPut("[action]")]
-        public bool UpdateSpecialist(int specialistId, [FromBody] CreateSpecialistCommand request)
+        public bool UpdateSpecialistEmail(int specialistId, string specialistEmail)
         {
             SpecialistContext context = HttpContext.RequestServices.GetService(typeof(SpecialistContext)) as SpecialistContext;
-            UpdateSpecialistHandler handler = new UpdateSpecialistHandler(context);
-            return handler.Handle(specialistId, request);
+            UpdateSpecialistEmailHandler handler = new UpdateSpecialistEmailHandler(context);
+            return handler.Handle(specialistId, specialistEmail);
         }
 
-        [HttpGet("[action]")]
+        [HttpPut("[action]")]
+        public bool UpdateSpecialistPassword(int specialistId, string specialistPassword)
+        {
+            SpecialistContext context = HttpContext.RequestServices.GetService(typeof(SpecialistContext)) as SpecialistContext;
+            UpdateSpecialistPasswordHandler handler = new UpdateSpecialistPasswordHandler(context);
+            return handler.Handle(specialistId, specialistPassword);
+        }
+
+        [HttpPost("[action]")]
         public IEnumerable<Specialist.Model.Specialist> GetSpecialistByEmailAndPassword(string email, string password)
         {
             SpecialistContext context = HttpContext.RequestServices.GetService(typeof(SpecialistContext)) as SpecialistContext;
