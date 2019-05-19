@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component } from '@angular/core';
 import { Router } from "@angular/router";
 import { NgForm } from '@angular/forms';
 
@@ -25,7 +24,7 @@ export class SignInComponent implements OnInit {
 
   login(form: NgForm) {
     let credentials = JSON.stringify(form.value);
-    this.http.post("http://localhost:3000/api/auth/login", credentials, {
+    this.http.post("http://localhost:3000/api/auth/sign-in", credentials, {
       headers: new HttpHeaders({
         "Content-Type": "application/json"
       })
@@ -33,7 +32,7 @@ export class SignInComponent implements OnInit {
       let token = (<any>response).token;
       localStorage.setItem("jwt", token);
       this.invalidLogin = false;
-      this.router.navigate(["/"]);
+      this.router.navigate(["/main"]);
     }, err => {
       this.invalidLogin = true;
     });
