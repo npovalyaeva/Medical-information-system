@@ -7,7 +7,7 @@
         <img class="logo" [src]="photo">
         <span>Medical Information System</span>
     </div>
-    <button class="sign_out" routerLink="../" mat-button >Выйти</button>
+    <button class="sign_out" routerLink="../" mat-button (onClick)="logOut()">Выйти</button>
   </mat-toolbar-row>
 </mat-toolbar>
 <mat-sidenav-container class="example-container">

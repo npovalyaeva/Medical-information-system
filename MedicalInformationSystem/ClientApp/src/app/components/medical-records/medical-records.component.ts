@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
-import {Record} from '../record';
+import {Record} from '../models/record';
 
 export interface MedicalRecordInfoForArchieve {
   record_id: number;

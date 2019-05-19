@@ -24,6 +24,11 @@ export class SidebarComponent implements OnInit {
   ];
   constructor() { }
   user = this.values[0];
+
+  logOut() {
+    localStorage.removeItem("jwt");
+  }
+
   ngOnInit() {
     this.user = this.values.find(x => x.id === this.id);
   }
