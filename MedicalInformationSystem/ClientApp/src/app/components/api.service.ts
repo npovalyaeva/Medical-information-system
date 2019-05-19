@@ -7,8 +7,8 @@ import { Record } from './record';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
-const apiUrl = "http://localhost:3000/api/v1/records";
-
+//const apiUrl = "http://localhost:3000/api/v1/records";
+const apiUrl = "/api/records";
 @Injectable({
   providedIn: 'root'
 })

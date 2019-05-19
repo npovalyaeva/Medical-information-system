@@ -1,9 +1,9 @@
 export class Record {
-    record_id: number;
-    first_name: string;
-    last_name: string;
-    patient_id: number;
-    icd10: string;
-    year: number;
-    charge_date: string;
+    RecordId: number;
+    FirstName: string;
+    LastName: string;
+    PatientId: number;
+    ICD10: string;
+    Year: number;
+    ChargeDate: string;
 }
