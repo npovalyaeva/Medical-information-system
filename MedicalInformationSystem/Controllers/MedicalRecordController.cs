@@ -13,7 +13,7 @@ namespace MedicalInformationSystem.Controllers
     [Route("api/records")]
     public class MedicalRecordController : Controller
     {
-        [HttpGet("[action]")]
+        [HttpGet()]
         public IEnumerable<MedicalRecord.Model.MedicalRecord> GetAllMedicalRecords()
         {
             /* var list = new List<Record>();

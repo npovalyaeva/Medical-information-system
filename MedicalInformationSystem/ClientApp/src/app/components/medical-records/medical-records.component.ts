@@ -51,8 +51,7 @@ export class MedicalRecordsComponent implements OnInit {
     this.api.getRecords()
     .subscribe((res: Record[]) => {
       this.currentDataSource = res;
-      console.log('after ' + JSON.stringify(this.currentDataSource[0]));
-      console.log('after after ' + this.currentDataSource[0].ChargeDate);
+      console.log(this.currentDataSource);
       this.isLoadingResults = false;
     }, err => {
       console.log(err);
