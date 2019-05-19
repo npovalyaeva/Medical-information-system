@@ -2,7 +2,7 @@
   <img class="logo" [src]="photo">
   <div class="form">
     <h2>Вход</h2>
-    <form action="#" method="post" class="login_form">
+    <form class="form-signin" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
       <mat-form-field floatLabel="never">
         <input matInput placeholder="Email">
       </mat-form-field>

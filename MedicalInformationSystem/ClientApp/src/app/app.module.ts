@@ -2,7 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import {Routes, RouterModule} from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './guards/auth-guard.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import {
   MatIconModule,
   MatFormFieldModule,
@@ -30,6 +32,7 @@ import { HomeLayoutComponent } from './layouts/home-layout/home-layout.component
 import { MedicalRecordsComponent } from './components/medical-records/medical-records.component';
 import { MedicalHistoryComponent } from './components/medical-history/medical-history.component';
 
+
 const appRoutes: Routes = [
   { path: '', redirectTo: 'sign-in', pathMatch: 'full'},
   { path: 'sign-in', component: SignInLayoutComponent,
@@ -37,7 +40,7 @@ const appRoutes: Routes = [
       {path: '', component: SignInComponent}
     ]
   },
-  { path: 'main', component: HomeLayoutComponent,
+  { path: 'main', component: HomeLayoutComponent, canActivate: [AuthGuard], 
     children: [
       { path: '', redirectTo: 'profile', pathMatch: 'full' },
       { path: 'profile', component: SpecialistProfileComponent },
@@ -81,7 +84,7 @@ const appRoutes: Routes = [
     MatProgressSpinnerModule,
     MatTooltipModule,
   ],
-  providers: [],
+  providers: [JwtHelperService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

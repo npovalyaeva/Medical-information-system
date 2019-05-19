@@ -47,8 +47,8 @@ export class MedicalRecordsComponent implements OnInit {
   constructor(private api: ApiService) { }
 
   ngOnInit() {
-    console.log('before ' + this.currentDataSource);
-    this.api.getRecords()
+    let token = localStorage.getItem("jwt");
+    this.api.getRecords(token)
     .subscribe((res: Record[]) => {
       this.currentDataSource = res;
       console.log(this.currentDataSource);

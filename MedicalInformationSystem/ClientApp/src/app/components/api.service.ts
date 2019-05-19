@@ -16,8 +16,13 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  getRecords (): Observable<Record[]> {
-    return this.http.get<Record[]>(apiUrl)
+  getRecords(token: any): Observable<Record[]> {
+    return this.http.get<Record[]>(apiUrl, {
+      headers: new HttpHeaders({
+        "Authorization": "Bearer " + token,
+        "Content-Type": "application/json"
+      })
+    })
       .pipe(
         tap(records => console.log('Fetch records')),
         catchError(this.handleError('getRecords', []))
