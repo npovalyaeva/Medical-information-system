@@ -34,7 +34,7 @@ export class ApiService {
 
   addRecord (record): Observable<Record> {
     return this.http.post<Record>(apiUrl, record, httpOptions).pipe(
-      tap((record: Record) => console.log(`added record w/ id=${record.record_id}`)),
+      tap((record: Record) => console.log(`added record w/ id=${record.RecordId}`)),
       catchError(this.handleError<Record>('addRecord'))
     );
   }

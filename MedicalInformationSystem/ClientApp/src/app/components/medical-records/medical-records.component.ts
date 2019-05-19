@@ -13,15 +13,15 @@ export interface MedicalRecordInfoForArchieve {
   discharge_date: string;
 }
 
-const CURRENT_DATA: Record[] = [
-  {record_id: 1, first_name: 'Анастасия', last_name: 'Дайгод', patient_id: 1012, icd10: 'E50.0', year: 2019, charge_date: '01.01.2019'},
-  {record_id: 2, first_name: 'Надежда', last_name: 'Поваляева', patient_id: 3409, icd10: 'E60.0', year: 2019, charge_date: '01.04.2019'},
-  {record_id: 2, first_name: 'Игорь', last_name: 'Шиманский', patient_id: 3029, icd10: 'E70.0', year: 2019, charge_date: '29.02.2019'},
-  {record_id: 2, first_name: 'Надежда', last_name: 'Поваляева', patient_id: 3409, icd10: 'E60.0', year: 2019, charge_date: '01.04.2019'},
-  {record_id: 2, first_name: 'Игорь', last_name: 'Шиманский', patient_id: 3029, icd10: 'E70.0', year: 2019, charge_date: '29.02.2019'},
-  {record_id: 1, first_name: 'Анастасия', last_name: 'Дайгод', patient_id: 1012, icd10: 'E50.0', year: 2019, charge_date: '01.01.2019'},
-  {record_id: 2, first_name: 'Надежда', last_name: 'Поваляева', patient_id: 3409, icd10: 'E60.0', year: 2019, charge_date: '01.04.2019'},
-];
+// const CURRENT_DATA: Record[] = [
+//   {record_id: 1, first_name: 'Анастасия', last_name: 'Дайгод', patient_id: 1012, icd10: 'E50.0', year: 2019, charge_date: '01.01.2019'},
+//   {record_id: 2, first_name: 'Надежда', last_name: 'Поваляева', patient_id: 3409, icd10: 'E60.0', year: 2019, charge_date: '01.04.2019'},
+//   {record_id: 2, first_name: 'Игорь', last_name: 'Шиманский', patient_id: 3029, icd10: 'E70.0', year: 2019, charge_date: '29.02.2019'},
+//   {record_id: 2, first_name: 'Надежда', last_name: 'Поваляева', patient_id: 3409, icd10: 'E60.0', year: 2019, charge_date: '01.04.2019'},
+//   {record_id: 2, first_name: 'Игорь', last_name: 'Шиманский', patient_id: 3029, icd10: 'E70.0', year: 2019, charge_date: '29.02.2019'},
+//   {record_id: 1, first_name: 'Анастасия', last_name: 'Дайгод', patient_id: 1012, icd10: 'E50.0', year: 2019, charge_date: '01.01.2019'},
+//   {record_id: 2, first_name: 'Надежда', last_name: 'Поваляева', patient_id: 3409, icd10: 'E60.0', year: 2019, charge_date: '01.04.2019'},
+// ];
 
 const ARCHIEVE_DATA: MedicalRecordInfoForArchieve[] = [
   {record_id: 1, first_name: 'Анастасия', last_name: 'Дайгод', patient_id: 1012, icd10: 'E50.0', year: 2019, charge_date: '01.01.2019', discharge_date: '02.01.2019'},
@@ -52,7 +52,7 @@ export class MedicalRecordsComponent implements OnInit {
     .subscribe((res: Record[]) => {
       this.currentDataSource = res;
       console.log('after ' + JSON.stringify(this.currentDataSource[0]));
-      console.log('after ' + this.currentDataSource[0].charge_date);
+      console.log('after after ' + this.currentDataSource[0].ChargeDate);
       this.isLoadingResults = false;
     }, err => {
       console.log(err);
