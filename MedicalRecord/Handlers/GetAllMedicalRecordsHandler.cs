@@ -22,7 +22,13 @@ namespace MedicalRecord.Handlers
             using (MySqlConnection conn = _context.GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT * FROM medical_records", conn);
+                string query = "SELECT medical_records.year, medical_records.record_id, medical_records.Medical_Histories_patient_id, " +
+                    "medical_records.ICD_10_ICD_10_id, medical_records.charge_date, medical_histories.last_name, " +
+                    "medical_histories.first_name " +
+                    "FROM medical_records " +
+                    "INNER JOIN medical_histories " +
+                    "ON medical_histories.patient_id = medical_records.Medical_Histories_patient_id";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
 
                 try
                 {
@@ -34,16 +40,12 @@ namespace MedicalRecord.Handlers
                             {
                                 Year = Convert.ToInt32(reader["year"]),
                                 RecordId = Convert.ToInt32(reader["record_id"]),
-                                ChargeDate = Convert.ToDateTime(reader["charge_date"]),
-                                DischargeDate = Convert.ToDateTime(reader["discharge_date"]),
-                                RelativePhoneNumber = reader["relative_phone_number"].ToString(),
-                                PaymentType = reader["payment_type"].ToString(),
-                                InpatientDays = Convert.ToInt32(reader["inpatient_days"]),
-                                DoctorId = Convert.ToInt32(reader["Doctors_Specialists_specialist_id"]),
-                                NurseId = Convert.ToInt32(reader["Nurses_Specialists_specialist_id"]),
+                                ChargeDate = reader["charge_date"].ToString(),
                                 PatientId = Convert.ToInt32(reader["Medical_Histories_patient_id"]),
-                                WardId = Convert.ToInt32(reader["Subunits_Wards_ward_id"]),
-                                Disease = reader["ICD_10_ICD_10_id"].ToString()
+                                ICD10 = reader["ICD_10_ICD_10_id"].ToString(),
+                                FirstName = reader["first_name"].ToString(),
+                                LastName = reader["last_name"].ToString()
+
                             });
                         }
                     }

@@ -6,25 +6,23 @@ using System.Text;
 
 namespace MedicalRecord.Handlers
 {
-    public class GetMedicalRecordsByDoctorIdHandler
+    public class GetAllFullMedicalRecordsHandler
     {
-        private readonly MedicalRecordContext _context;
+        private readonly FullMedicalRecordContext _context;
 
-        public GetMedicalRecordsByDoctorIdHandler(MedicalRecordContext context)
+        public GetAllFullMedicalRecordsHandler(FullMedicalRecordContext context)
         {
             _context = context;
         }
 
-        public List<Model.MedicalRecord> Handle(int doctorId)
+        public List<Model.FullMedicalRecord> Handle()
         {
-            List<Model.MedicalRecord> list = new List<Model.MedicalRecord>();
+            List<Model.FullMedicalRecord> list = new List<Model.FullMedicalRecord>();
 
             using (MySqlConnection conn = _context.GetConnection())
             {
                 conn.Open();
-                string query = string.Format("SELECT * FROM medical_records WHERE (Doctors_Specialists_specialist_id) = ('{0}')",
-                    doctorId);
-                MySqlCommand cmd = new MySqlCommand(query, conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM medical_records", conn);
 
                 try
                 {
@@ -32,7 +30,7 @@ namespace MedicalRecord.Handlers
                     {
                         while (reader.Read())
                         {
-                            list.Add(new Model.MedicalRecord()
+                            list.Add(new Model.FullMedicalRecord()
                             {
                                 Year = Convert.ToInt32(reader["year"]),
                                 RecordId = Convert.ToInt32(reader["record_id"]),

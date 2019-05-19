@@ -6,18 +6,18 @@ using System.Text;
 
 namespace MedicalRecord.Handlers
 {
-    public class GetMedicalRecordByIdHandler
+    public class GetFullMedicalRecordByIdHandler
     {
-        private readonly MedicalRecordContext _context;
+        private readonly FullMedicalRecordContext _context;
 
-        public GetMedicalRecordByIdHandler(MedicalRecordContext context)
+        public GetFullMedicalRecordByIdHandler(FullMedicalRecordContext context)
         {
             _context = context;
         }
 
-        public List<Model.MedicalRecord> Handle(int medicalRecordYear, int medicalRecordId)
+        public List<Model.FullMedicalRecord> Handle(int medicalRecordYear, int medicalRecordId)
         {
-            List<Model.MedicalRecord> list = new List<Model.MedicalRecord>();
+            List<Model.FullMedicalRecord> list = new List<Model.FullMedicalRecord>();
 
             using (MySqlConnection conn = _context.GetConnection())
             {
@@ -32,7 +32,7 @@ namespace MedicalRecord.Handlers
                     {
                         while (reader.Read())
                         {
-                            list.Add(new Model.MedicalRecord()
+                            list.Add(new Model.FullMedicalRecord()
                             {
                                 Year = Convert.ToInt32(reader["year"]),
                                 RecordId = Convert.ToInt32(reader["record_id"]),
