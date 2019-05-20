@@ -10,13 +10,13 @@ namespace CertificationCenter.Controllers
     [Route("api/[controller]")]
     public class SpecialistController : Controller
     {
-        [HttpPost("[action]")]
-        public bool CreateSpecialist([FromBody] CreateSpecialistCommand request)
-        {
-            SpecialistContext context = HttpContext.RequestServices.GetService(typeof(SpecialistContext)) as SpecialistContext;
-            CreateSpecialistHandler handler = new CreateSpecialistHandler(context);
-            return handler.Handle(request);
-        }
+        //[HttpPost("[action]")]
+        //public bool CreateSpecialist([FromBody] CreateSpecialistCommand request)
+        //{
+        //    SpecialistContext context = HttpContext.RequestServices.GetService(typeof(SpecialistContext)) as SpecialistContext;
+        //    CreateSpecialistHandler handler = new CreateSpecialistHandler(context);
+        //    return handler.Handle(request);
+        //}
 
         [HttpPut("[action]")]
         public bool UpdateSpecialistEmail(int specialistId, string specialistEmail)
@@ -34,12 +34,28 @@ namespace CertificationCenter.Controllers
             return handler.Handle(specialistId, specialistPassword);
         }
 
-        [HttpPost("[action]")]
+        [HttpGet("[action]")]
+        public IEnumerable<Specialist.Model.Specialist> GetSpecialistById(int id)
+        {
+            SpecialistContext context = HttpContext.RequestServices.GetService(typeof(SpecialistContext)) as SpecialistContext;
+            GetSpecialistByIdHandler handler = new GetSpecialistByIdHandler(context);
+            return handler.Handle(id);
+        }
+
+        [HttpGet("[action]")]
         public IEnumerable<Specialist.Model.Specialist> GetSpecialistByEmailAndPassword(string email, string password)
         {
             SpecialistContext context = HttpContext.RequestServices.GetService(typeof(SpecialistContext)) as SpecialistContext;
             GetSpecialistByEmailAndPasswordHandler handler = new GetSpecialistByEmailAndPasswordHandler(context);
             return handler.Handle(email, password);
+        }
+
+        [HttpGet("[action]")]
+        public IEnumerable<Specialist.Model.Name> GetAllDoctorsNames()
+        {
+            SpecialistNameContext context = HttpContext.RequestServices.GetService(typeof(SpecialistNameContext)) as SpecialistNameContext;
+            GetAllDoctorsNamesHandler handler = new GetAllDoctorsNamesHandler(context);
+            return handler.Handle();
         }
 
     }

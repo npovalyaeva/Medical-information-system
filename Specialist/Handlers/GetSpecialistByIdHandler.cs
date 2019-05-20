@@ -6,16 +6,16 @@ using System.Text;
 
 namespace Specialist.Handlers
 {
-    public class GetSpecialistByEmailAndPasswordHandler
+    public class GetSpecialistByIdHandler
     {
         private readonly SpecialistContext _context;
 
-        public GetSpecialistByEmailAndPasswordHandler(SpecialistContext context)
+        public GetSpecialistByIdHandler(SpecialistContext context)
         {
             _context = context;
         }
 
-        public List<Model.Specialist> Handle(string email, string password)
+        public List<Model.Specialist> Handle(int specialistId)
         {
             List<Model.Specialist> list = new List<Model.Specialist>();
 
@@ -40,8 +40,8 @@ namespace Specialist.Handlers
                     "ON hospital_database.specialists.`Units_unit_id` = hospital_database.units.`unit_id` " +
                     "LEFT JOIN hospital_database.subunits " +
                     "ON hospital_database.specialists.`Subunits_subunit_id` = hospital_database.subunits.`subunit_id` " +
-                    "WHERE (email, password_hash) = ('{0}', '{1}')",
-                    email, Hash.FindHash(password));
+                    "WHERE hospital_database.specialists.`specialist_id` = '{0}'",
+                    specialistId);
                 MySqlCommand cmd = new MySqlCommand(query, conn);
 
                 try
@@ -67,7 +67,7 @@ namespace Specialist.Handlers
 
                                 DiplomaSpeciality = reader["diploma_speciality"].ToString(),
                                 Qualification = reader["qualification"].ToString() == "" ? -1 : Convert.ToInt32(reader["qualification"]),
-                                PostNumber = reader["post_number"].ToString() == "" ? -1 : Convert.ToInt32(reader["post_number"]),
+                                PostNumber = reader["post_number"].ToString() == "" ? - 1 : Convert.ToInt32(reader["post_number"]),
                                 IsDoctor = reader["diploma_speciality"].ToString() == "" ? false : true
 
                             });
