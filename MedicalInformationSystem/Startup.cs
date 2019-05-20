@@ -25,11 +25,7 @@ namespace MedicalInformationSystem
         {
             services.AddCors(o => o.AddPolicy("MyPolicy", corsBuilder =>
             {
-                corsBuilder.WithOrigins("http://localhost:3000")
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .AllowAnyOrigin()
-                    .AllowCredentials();
+                corsBuilder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials();
             }));
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {

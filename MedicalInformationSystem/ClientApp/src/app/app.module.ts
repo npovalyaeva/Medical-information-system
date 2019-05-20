@@ -1,10 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './guards/auth-guard.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { UserService } from './components/user.service';
 import {
   MatIconModule,
   MatFormFieldModule,
@@ -66,6 +68,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
+    HttpModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
@@ -84,7 +87,7 @@ const appRoutes: Routes = [
     MatProgressSpinnerModule,
     MatTooltipModule,
   ],
-  providers: [JwtHelperService, AuthGuard],
+  providers: [JwtHelperService, AuthGuard, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
