@@ -1,35 +1,34 @@
-﻿//using Doctor.Commands;
-//using Doctor.Data;
+﻿//using MySql.Data.MySqlClient;
+//using Specialist.Data;
+//using Specialist.Commands;
 //using Mapster;
-//using MySql.Data.MySqlClient;
-//using System;
-//using System.Collections.Generic;
-//using System.Text;
 
-//namespace Doctor.Handlers
+//namespace Specialist.Handlers
 //{
-//    public class CreateDoctorHandler
+//    public class UpdateSpecialistHandler
 //    {
-//        private readonly DoctorContext _context;
+//        private readonly SpecialistContext _context;
 
-//        public CreateDoctorHandler(DoctorContext context)
+//        public UpdateSpecialistHandler(SpecialistContext context)
 //        {
 //            _context = context;
 //        }
 
-//        public bool Handle(CreateDoctorCommand request)
+//        public bool Handle(int specialistId, CreateSpecialistCommand request)
 //        {
-//            var model = request.Adapt<Model.Doctor>();
-//            string tempHash = Specialist.Data.Hash.FindHash(model.PasswordHash);
+//            var model = request.Adapt<Model.Specialist>();
+//            string tempHash = Hash.FindHash(model.PasswordHash);
 //            model.PasswordHash = tempHash;
 
 //            using (MySqlConnection conn = _context.GetConnection())
 //            {
 //                conn.Open();
-//                string query = string.Format("INSERT INTO specialists(last_name, first_name, middle_name, email, password_hash, birthday, education, position, admission_date, dismissal_date, wage_rate, Subunits_subunit_id, Units_unit_id, Parlours_parlour_id) " +
-//                    "VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}', '{12}', '{13}');" +
-//                    "INSERT INTO doctors(Specialists_specialist_id, diploma_speciality, qualification) " +
-//                    "VALUES(LAST_INSERT_ID(), '{14}', '{15}')",
+
+//                string query = string.Format("UPDATE specialists SET last_name = '{1}', first_name= '{2}', middle_name = '{3}', " +
+//                    "email = '{4}', password_hash = '{5}', birthday = '{6}', education = '{7}', position = '{8}', " +
+//                    "admission_date = '{9}', dismissal_date = '{10}', wage_rate = '{11}', " +
+//                    "Subunits_subunit_id = '{12}', Units_unit_id = '{13}', Parlours_parlour_id = '{14}' WHERE specialist_id = {0}",
+//                    specialistId.ToString(),
 //                    model.LastName,
 //                    model.FirstName,
 //                    model.MiddleName,
@@ -43,10 +42,10 @@
 //                    model.WageRate.ToString(),
 //                    model.SubunitId.ToString(),
 //                    model.UnitId.ToString(),
-//                    model.ParlourId.ToString(),
-//                    model.DiplomaSpeciality,
-//                    model.Qualification.ToString());
+//                    model.ParlourId.ToString());
+
 //                MySqlCommand cmd = new MySqlCommand(query, conn);
+
 //                try
 //                {
 //                    cmd.ExecuteNonQuery();
