@@ -22,11 +22,7 @@ namespace MedicalInformationSystem
         {
             services.AddCors(o => o.AddPolicy("MyPolicy", corsBuilder =>
             {
-                corsBuilder.WithOrigins("http://localhost:3000")
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .AllowAnyOrigin()
-                    .AllowCredentials();
+                corsBuilder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials();
             }));
             services.AddMvc()/*.SetCompatibilityVersion(CompatibilityVersion.Version_2_1)*/;
             services.Add(new ServiceDescriptor(typeof(Specialist.Data.SpecialistContext), new Specialist.Data.SpecialistContext(Configuration.GetConnectionString("DefaultConnection"))));

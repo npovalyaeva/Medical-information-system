@@ -2,17 +2,15 @@
   <img class="logo" [src]="photo">
   <div class="form">
     <h2>Вход</h2>
-    <form class="form-signin" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+    <form #f="ngForm" novalidate (ngSubmit)="login(f)">
       <mat-form-field floatLabel="never">
-        <input matInput placeholder="Email">
+        <input matInput required name="email" [ngModel]="credentials.email" #email="ngModel" tmFocus placeholder="Email">
       </mat-form-field>
       <mat-form-field floatLabel="never">
-        <input matInput placeholder="Пароль" [type]="show ? 'text' : 'password'">
+        <input matInput placeholder="Пароль" [type]="show ? 'text' : 'password'" id="password" required name="password" ngModel>
         <mat-icon matSuffix (click)="password()">{{iconName}}</mat-icon>
       </mat-form-field>
-      <button routerLink="../main" mat-flat-button type="submit">Войти</button>
-      <div class="sign_up">
-      </div>
+      <button mat-flat-button type="submit" [disabled]="f.invalid || isRequesting">Войти</button>
     </form>
   </div>
 </div>
