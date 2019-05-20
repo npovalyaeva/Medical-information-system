@@ -53,6 +53,8 @@ namespace MedicalInformationSystem
             //services.Add(new ServiceDescriptor(typeof(Doctor.Data.DoctorContext), new Doctor.Data.DoctorContext(Configuration.GetConnectionString("DefaultConnection"))));
             services.Add(new ServiceDescriptor(typeof(MedicalRecord.Data.FullMedicalRecordContext), new MedicalRecord.Data.FullMedicalRecordContext(Configuration.GetConnectionString("DefaultConnection"))));
             services.Add(new ServiceDescriptor(typeof(MedicalRecord.Data.MedicalRecordContext), new MedicalRecord.Data.MedicalRecordContext(Configuration.GetConnectionString("DefaultConnection"))));
+            services.Add(new ServiceDescriptor(typeof(MedicalHistory.Data.MedicalHistoryContext), new MedicalHistory.Data.MedicalHistoryContext(Configuration.GetConnectionString("DefaultConnection"))));
+            services.Add(new ServiceDescriptor(typeof(MedicalHistory.Data.NameContext), new MedicalHistory.Data.NameContext(Configuration.GetConnectionString("DefaultConnection"))));
             services.Add(new ServiceDescriptor(typeof(Specialist.Data.SpecialistNameContext), new Specialist.Data.SpecialistNameContext(Configuration.GetConnectionString("DefaultConnection"))));
             services.AddSwaggerGen(swagger =>
             {

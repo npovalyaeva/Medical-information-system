@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Specialist", "Specialist\Sp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Doctor", "Doctor\Doctor.csproj", "{2A8EB900-C523-49F7-9A12-914342783D7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Disease", "ICD10\Disease.csproj", "{7BE50C49-761C-45D2-A18F-747398C1B6A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Disease", "ICD10\Disease.csproj", "{7BE50C49-761C-45D2-A18F-747398C1B6A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalRecord", "MedicalRecord\MedicalRecord.csproj", "{3B2E60DC-F592-485D-A373-244597BC3715}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedicalRecord", "MedicalRecord\MedicalRecord.csproj", "{3B2E60DC-F592-485D-A373-244597BC3715}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedicalHistory", "MedicalHistory\MedicalHistory.csproj", "{59DDD805-3094-44A0-875C-D5113AAA4F7A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{3B2E60DC-F592-485D-A373-244597BC3715}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B2E60DC-F592-485D-A373-244597BC3715}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B2E60DC-F592-485D-A373-244597BC3715}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59DDD805-3094-44A0-875C-D5113AAA4F7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59DDD805-3094-44A0-875C-D5113AAA4F7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59DDD805-3094-44A0-875C-D5113AAA4F7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59DDD805-3094-44A0-875C-D5113AAA4F7A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

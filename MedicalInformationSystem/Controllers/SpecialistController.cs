@@ -5,7 +5,7 @@ using Specialist.Handlers;
 using Specialist.Commands;
 using Specialist.Model;
 
-namespace CertificationCenter.Controllers
+namespace MedicalInformationSystem.Controllers
 {
     [Route("api/[controller]")]
     public class SpecialistController : Controller
